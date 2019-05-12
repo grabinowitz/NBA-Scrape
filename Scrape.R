@@ -1,5 +1,5 @@
 
-#Use Hockey Reference to find total shots on a given date
+#Use Basketball Reference to find total shots on a given date
 library(rvest)
 library(data.table)
 library(tidyverse)
