@@ -1,4 +1,3 @@
-
 #Use Basketball Reference to find total shots on a given date
 library(rvest)
 library(data.table)
@@ -7,11 +6,14 @@ library(tidyverse)
 
 
 ##### INPUTS ##############
-Start_Date = "2018-10-03" 
-End_Date   = "2019-04-07"   
+Start_Date = "2018-10-31" 
+End_Date   = "2018-11-15"   
 ###########################
 
 #Create list of Dates between start_date and end_date
+
+
+
 getDateList <- function(start_date, end_date){
   temp_list <- list()
   temp_dates <- seq(as.Date(start_date), as.Date(end_date), "days")
@@ -29,9 +31,6 @@ getDateList <- function(start_date, end_date){
   }
   return(temp_list)
 }
-
-
-
 
 #Write the link to boxscores of all games on each date between start_date and end_date
 getDateLinks <- function(x){
@@ -53,7 +52,9 @@ getGameLinks <- function(x){
     filter(grepl(paste0("/boxscores/",x[["Year"]], 
                         x[["Month"]], 
                         x[["Day"]]), value)==TRUE) %>% 
-    as.data.frame()
+    as.data.frame() %>% 
+    unique()
+    
 }
 
 
